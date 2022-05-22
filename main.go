@@ -1,5 +1,9 @@
 package main
 
+import (
+	"golang/application"
+)
+
 func main() {
-	app.ApplicationStart()
+	application.ApplicationStart()
 }
