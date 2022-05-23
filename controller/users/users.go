@@ -41,9 +41,10 @@ func Login(c *gin.Context) {
 		return
 	}
 
+	ExpiresIn, _ := time.ParseDuration("15m")
 	claims := jwt.NewWithClaims(jwt.SigningMethodES256, jwt.StandardClaims{
 		Issuer:    strconv.Itoa(int(result.ID)),
-		ExpiresAt: time.Now().Add(time.Hour * 72).Unix(),
+		ExpiresAt: time.Now().Add(time.Minute.Truncate(ExpiresIn)).Unix(),
 	})
 
 	token, err := claims.SignedString([]byte(""))

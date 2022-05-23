@@ -6,10 +6,11 @@ import (
 )
 
 type User struct {
-	ID       int64  `json: "ID`
-	Username string `json: "username"`
-	Password string `json: "password"`
-	Email    string `json: "email"`
+	ID         int64  `json:"_id,omitempty" bson:"_id,omitempty"`
+	Username   string `json:"name" bson:"name"`
+	Email      string `json:"email" bson:"email"`
+	Password   string `json:"password" bson:"password"`
+	IsVerified bool   `json:"is_verified" bson:"is_verified"`
 }
 
 func (user *User) Validate() *errors.Errors {
