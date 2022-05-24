@@ -48,3 +48,11 @@ func GetUserByID(userId int64) (*users.User, *errors.Errors) {
 	}
 	return result, nil
 }
+
+func GetUserByEmail(email string) (*users.User, *errors.Errors) {
+	result := &users.User{Email: email}
+	if err := result.GetByEmail(); err != nil {
+		return nil, err
+	}
+	return result, nil
+}
